@@ -2,12 +2,25 @@ package main
 
 import(
 	"fmt"
+	"strconv"
 	"math/rand"
+	"os"
+	"time"
 )
 
 
 func main() {
 
+	max,_ := strconv.Atoi(os.Args[1])
+	for x:=0;x<max;x++{
+		seq,_ :=strconv.Atoi(os.Args[2])
+		go sequenceGenome(generateSequence(seq))
+	}
+	time.Sleep(10000)
+}
+
+func sequenceGenome(sequence string){
+	fmt.Print(sequence + "oWo\n")
 }
 
 //returns one string
@@ -16,6 +29,7 @@ func generateSequence(length int)(string){
 	for x:= 0; x < length; x++{
 		st += getNucleotide()
 	}
+//	fmt.Print(st + "*___*")
 	return st
 }
 
